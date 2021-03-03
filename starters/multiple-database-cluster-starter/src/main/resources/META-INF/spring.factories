@@ -1,0 +1,8 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+io.futakotome.MHDatasource.config.mysql.DynamicDatasourceRouterAutoConfiguration,\
+io.futakotome.MHDatasource.config.mysql.MysqlDatasourcesRouterConfiguration,\
+io.futakotome.MHDatasource.annotation.DynamicDatasourceAspectConfig,\
+io.futakotome.MHDatasource.config.redis.RedisConnectionsRouterAutoConfiguration,\
+io.futakotome.MHDatasource.config.redis.RedisConnectionsRouterConfiguration,\
+io.futakotome.MHDatasource.config.mongo.MongoDbRouterAutoConfiguration,\
+io.futakotome.MHDatasource.config.mongo.MongoDbRouterConfiguration

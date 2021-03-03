@@ -1,0 +1,19 @@
+spring:
+  jpa:
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQL5Dialect
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+
+multiple:
+  mysql:
+    enabled: false
+  redis:
+    enabled: false
+  mongo:
+    enabled: false
+
+logging:
+  level:
+    root: info

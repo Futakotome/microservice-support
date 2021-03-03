@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+io.futakotome.layerCache.config.LayerCacheAutoConfiguration,\
+io.futakotome.layerCache.config.LayerCacheRegister

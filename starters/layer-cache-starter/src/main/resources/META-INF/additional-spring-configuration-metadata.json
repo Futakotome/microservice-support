@@ -1,0 +1,10 @@
+{
+  "properties": [
+    {
+      "name": "cache.layers",
+      "type": "java.util.Map",
+      "description": "layers maps.",
+      "sourceType": "io.futakotome.layerCache.config.LayerCacheProperties"
+    }
+  ]
+}

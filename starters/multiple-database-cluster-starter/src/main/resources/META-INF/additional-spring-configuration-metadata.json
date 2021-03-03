@@ -1,0 +1,40 @@
+{
+  "properties": [
+    {
+      "name": "multiple.mysql.enabled",
+      "type": "java.lang.Boolean",
+      "description": "mysql multiple datasource enabled.",
+      "sourceType": "io.futakotome.MHDatasource.config.mysql.MysqlDynamicDatasourceProperties"
+    },
+    {
+      "name": "multiple.mysql.datasources",
+      "type": "java.util.List<io.futakotome.MHDatasource.config.mysql.MysqlDatasourceDefinition>",
+      "description": "mysql datasource list.",
+      "sourceType": "io.futakotome.MHDatasource.config.mysql.MysqlDynamicDatasourceProperties"
+    },
+    {
+      "name": "multiple.redis.enabled",
+      "type": "java.lang.Boolean",
+      "description": "redis multiple datasource enabled.",
+      "sourceType": "io.futakotome.MHDatasource.config.redis.RedisDynamicConnectionProperties"
+    },
+    {
+      "name": "multiple.redis.connections",
+      "type": "java.util.List<io.futakotome.MHDatasource.config.redis.RedisConnectionsDefinition>",
+      "description": "redis connection list.",
+      "sourceType": "io.futakotome.MHDatasource.config.redis.RedisDynamicConnectionProperties"
+    },
+    {
+      "name": "multiple.mongo.enabled",
+      "type": "java.lang.Boolean",
+      "description": "mongodb multiple datasource enabled.",
+      "sourceType": "io.futakotome.MHDatasource.config.mongo.MongoDynamicClientsProperties"
+    },
+    {
+      "name": "multiple.mongo.clients",
+      "type": "java.util.List<io.futakotome.MHDatasource.config.mongo.MongoDynamicClientsDefinition>",
+      "description": "mongodb datasource list.",
+      "sourceType": "io.futakotome.MHDatasource.config.mongo.MongoDynamicClientsProperties"
+    }
+  ]
+}

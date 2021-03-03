@@ -1,0 +1,26 @@
+cache:
+  layers:
+    l1:
+      enabled: true
+      cacheType: simple
+    l2:
+      enabled: true
+      cacheType: caffeine
+
+server:
+  port: 9999
+#spring:
+#  redis:
+#    database: 0
+#    url: localhost
+#    password: admin
+#    client-name: test-client
+#    lettuce:
+#      pool:
+#        max-active: 8
+#        max-idle: 8
+#        min-idle: 1
+
+logging:
+  level:
+    root: info
