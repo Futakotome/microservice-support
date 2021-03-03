@@ -4,6 +4,7 @@ import io.futakotome.events.EventSerializer;
 import io.futakotome.events.config.EventPublicationConfigurationExtension;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.ObjectFactory;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.ImportSelector;
@@ -18,6 +19,11 @@ public class JpaEventPublicationConfiguration implements EventPublicationConfigu
 
     private final JpaEventPublicationRepository repository;
     private final ObjectFactory<EventSerializer> serializer;
+
+    @Bean
+    public JpaEventPublicationRegistry jpaEventPublicationRegistry() {
+        return new JpaEventPublicationRegistry(repository, serializer.getObject());
+    }
 
     static class RepositoriesEnablingImportSelector implements ImportSelector {
         private static final boolean IN_SPRING_BOOT = ClassUtils.isPresent("org.springframework.boot.SpringApplication",
