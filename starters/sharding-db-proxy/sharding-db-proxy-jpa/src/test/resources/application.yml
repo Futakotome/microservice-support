@@ -1,0 +1,11 @@
+proxy:
+  jpa:
+    datasourceInfoMap:
+      ds1:
+        url: asd
+        username: asd
+        password: asd
+      ds2:
+        url: as
+        username: asd
+        password: asd

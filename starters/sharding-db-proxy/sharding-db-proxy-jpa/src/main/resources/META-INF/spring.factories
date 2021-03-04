@@ -1,0 +1,2 @@
+io.futakotome.dbproxy.config.DatasourceConfigurationExtension=io.futakotome.dbproxy.jpa.config.JpaDatasourceConfiguration
+io.futakotome.dbproxy.config.ShardRuleConfigurationExtension=io.futakotome.dbproxy.jpa.config.JpaShardRuleConfiguration

@@ -1,0 +1,10 @@
+{
+  "properties": [
+    {
+      "name": "proxy.jpa.datasources",
+      "type": "java.util.Map",
+      "description": "jpa multiple datasource configuration.",
+      "sourceType": "io.futakotome.dbproxy.jpa.config.ProxyDatasourceProperties"
+    }
+  ]
+}

@@ -17,6 +17,7 @@
         <module>multiple-database-demo</module>
         <module>layer-cache-demo</module>
         <module>ddd-domain-events</module>
+        <module>sharding-db-proxy</module>
     </modules>
 
 </project>
