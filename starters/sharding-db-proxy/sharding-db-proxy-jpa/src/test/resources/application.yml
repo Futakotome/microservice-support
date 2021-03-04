@@ -9,3 +9,37 @@ proxy:
         url: as
         username: asd
         password: asd
+  rules:
+    - tableName: tb1
+      dimensionConfigs:
+        - dbRule: rule1
+          dbIndexes: 1
+          tbRule: tbRule2
+          tbSuffix: tb
+          tbSuffixZeroPadding: true
+          isMaster: true
+          tableName: tb1
+        - dbRule: rule2
+          dbIndexes: 1
+          tbRule: tbRule2
+          tbSuffix: tb
+          tbSuffixZeroPadding: true
+          isMaster: true
+          tableName: tb1
+    - tableName: tb2
+      dimensionConfigs:
+        - dbRule: rule1
+          dbIndexes: 1
+          tbRule: tbRule2
+          tbSuffix: tb
+          tbSuffixZeroPadding: true
+          isMaster: true
+          tableName: tb1
+        - dbRule: rule2
+          dbIndexes: 1
+          tbRule: tbRule2
+          tbSuffix: tb
+          tbSuffixZeroPadding: true
+          isMaster: true
+          tableName: tb1
+

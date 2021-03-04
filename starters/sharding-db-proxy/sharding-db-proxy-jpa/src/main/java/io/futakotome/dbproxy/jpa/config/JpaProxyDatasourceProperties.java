@@ -10,7 +10,7 @@ import java.util.Map;
 @Getter
 @Setter
 @ConfigurationProperties(prefix = "proxy.jpa")
-public class ProxyDatasourceProperties implements Serializable {
+public class JpaProxyDatasourceProperties implements Serializable {
 
     private Map<String, DatasourceInfo> datasources;
 

@@ -1,10 +1,10 @@
 package io.futakotome.dbproxy.jpa.config;
 
 import io.futakotome.dbproxy.config.ShardRuleConfigurationExtension;
-import lombok.RequiredArgsConstructor;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration(proxyBeanMethods = false)
-@RequiredArgsConstructor
+@EnableConfigurationProperties(JpaShardRuleProperties.class)
 public class JpaShardRuleConfiguration implements ShardRuleConfigurationExtension {
 }
