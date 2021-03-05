@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: service-provider
+dubbo:
+  scan:
+    base-packages: io.futakotome.service
+  protocol:
+    name: dubbo
+    port: 12345
+  registry:
+    address: N/A
