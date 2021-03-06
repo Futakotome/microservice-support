@@ -14,14 +14,7 @@ public class ConsumerBootStrap {
 
     private Logger LOGGER = LoggerFactory.getLogger(getClass());
 
-    @DubboReference(
-            version = "1.0.0",
-            url = "dubbo://127.0.0.1:12345",
-            timeout = 100,
-            methods = {
-                    @Method(name = "say", timeout = 3000)
-            }
-    )
+    @DubboReference(version = "1.0.0")
     private AService aService;
 
     public static void main(String[] args) {

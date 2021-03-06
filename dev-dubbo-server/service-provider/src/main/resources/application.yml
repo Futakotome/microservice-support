@@ -5,7 +5,12 @@ dubbo:
   scan:
     base-packages: io.futakotome
   protocol:
-    port: 12345
+    port: -1
     name: dubbo
   registry:
-    address: N/A
+    address: zookeeper://${zookeeper.server.host}:${zookeeper.server.port}/?registry-type=service
+
+zookeeper:
+  server:
+    host: 127.0.0.1
+    port: 2181
