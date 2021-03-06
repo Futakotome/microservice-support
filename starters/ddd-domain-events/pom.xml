@@ -19,6 +19,7 @@
         <module>ddd-domain-events-test</module>
     </modules>
     <dependencies>
+
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>

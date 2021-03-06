@@ -18,6 +18,6 @@
         <module>starters</module>
         <module>cache-service</module>
         <module>dev-eruka-server</module>
-        <module>dubbo</module>
+        <module>dev-dubbo-server</module>
     </modules>
 </project>
