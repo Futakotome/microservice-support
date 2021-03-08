@@ -19,5 +19,6 @@
         <module>cache-service</module>
         <module>dev-eruka-server</module>
         <module>dev-dubbo-server</module>
+        <module>jni</module>
     </modules>
 </project>
