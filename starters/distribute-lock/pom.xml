@@ -3,22 +3,20 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>supportlayer</artifactId>
+        <artifactId>starters</artifactId>
         <groupId>io.futakotome</groupId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>starters</artifactId>
-    <packaging>pom</packaging>
+    <artifactId>distribute-lock</artifactId>
     <modules>
-        <module>multiple-database-cluster-starter</module>
-        <module>layer-cache-starter</module>
-        <module>multiple-database-demo</module>
-        <module>layer-cache-demo</module>
-        <module>ddd-domain-events</module>
-        <module>sharding-db-proxy</module>
-        <module>distribute-lock</module>
+        <module>distribute-lock-core</module>
     </modules>
 
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+    </properties>
+    <packaging>pom</packaging>
 </project>
