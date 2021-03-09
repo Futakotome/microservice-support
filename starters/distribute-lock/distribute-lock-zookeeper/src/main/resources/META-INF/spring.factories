@@ -1,0 +1,2 @@
+io.futakotome.lock.configuration.DistributeLockConfigurationExtension=io.futakotome.lock.ZookeeperDistributeLockConfiguration
+io.futakotome.lock.configuration.DistributeLockExecutorConfigurationExtension=io.futakotome.lock.ZookeeperDistributeLockExecutorConfiguration
