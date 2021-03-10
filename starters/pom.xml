@@ -19,6 +19,7 @@
         <module>ddd-domain-events</module>
         <module>sharding-db-proxy</module>
         <module>distribute-lock</module>
+        <module>distribute-global-id-generator</module>
     </modules>
 
 </project>
