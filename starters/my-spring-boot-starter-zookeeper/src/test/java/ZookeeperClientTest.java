@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 
 public class ZookeeperClientTest {
     @Test
-    public void testAutoConfiguration() {
+    public void testAutoConfiguration() throws Exception {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
         context.register(InfrastructureConfiguration.class);
         context.refresh();
@@ -17,6 +17,8 @@ public class ZookeeperClientTest {
         System.out.println(context.getBean(CuratorFramework.class));
         System.out.println(context.getBean(ZookeeperClientTemplate.class));
 
+        ZookeeperClientTemplate template = context.getBean(ZookeeperClientTemplate.class);
+        template.createPath("/test");
     }
 
     @Configuration(proxyBeanMethods = false)

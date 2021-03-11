@@ -1,15 +1,16 @@
 package io.futakotome.zk.config;
 
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.imps.CuratorFrameworkState;
 import org.springframework.boot.actuate.health.AbstractHealthIndicator;
 import org.springframework.boot.actuate.health.Health;
 
-@RequiredArgsConstructor
 public class ZookeeperHealthIndicator extends AbstractHealthIndicator {
-    private final @NonNull CuratorFramework curatorFramework;
+    private final CuratorFramework curatorFramework;
+
+    public ZookeeperHealthIndicator(CuratorFramework curatorFramework) {
+        this.curatorFramework = curatorFramework;
+    }
 
     @Override
     protected void doHealthCheck(Health.Builder builder) throws Exception {

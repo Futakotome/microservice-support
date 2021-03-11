@@ -1,10 +1,16 @@
 {
   "properties": [
     {
-      "name": "",
+      "name": "management.health.zookeeper.enabled",
+      "type": "java.lang.Boolean",
+      "description": "Enable the health endpoint for zookeeper.",
+      "defaultValue": true
     },
     {
-      "name":""
+      "name": "endpoints.zookeeper.enabled",
+      "type": "java.lang.Boolean",
+      "description": "Enabled the /zookeeper endpoint to inspect the state of the zookeeper.",
+      "defaultValue": true
     }
   ]
 }

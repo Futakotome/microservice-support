@@ -20,11 +20,11 @@ import org.springframework.context.annotation.Configuration;
 @ConditionalOnZookeeperEnabled
 public class ZookeeperAutoConfiguration {
 
-    @Bean
-    @ConditionalOnMissingBean
-    public ZookeeperProperties zookeeperProperties() {
-        return new ZookeeperProperties();
-    }
+//    @Bean
+//    @ConditionalOnMissingBean
+//    public ZookeeperProperties zookeeperProperties() {
+//        return new ZookeeperProperties();
+//    }
 
     @Bean(destroyMethod = "close")
     public CuratorFramework curatorFramework(ZookeeperProperties properties, RetryPolicy retryPolicy,

@@ -1,7 +1,5 @@
 package io.futakotome.zk;
 
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.api.ExistsBuilder;
 import org.apache.curator.framework.imps.CuratorFrameworkState;
@@ -15,11 +13,14 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
-@RequiredArgsConstructor
 public class ZookeeperClientTemplate implements ZookeeperOperations {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ZookeeperClientTemplate.class);
-    private final @NonNull CuratorFramework curatorFramework;
+    private final CuratorFramework curatorFramework;
+
+    public ZookeeperClientTemplate(CuratorFramework curatorFramework) {
+        this.curatorFramework = curatorFramework;
+    }
 
     @Override
     public void start() {
