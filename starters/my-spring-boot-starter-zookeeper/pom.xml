@@ -8,7 +8,7 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
+    <version>1.0.0-SNAPSHOT</version>
     <artifactId>my-spring-boot-starter-zookeeper</artifactId>
 
     <properties>
@@ -60,4 +60,5 @@
             <optional>true</optional>
         </dependency>
     </dependencies>
+
 </project>

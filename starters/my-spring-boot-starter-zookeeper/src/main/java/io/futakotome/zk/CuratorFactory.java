@@ -8,6 +8,8 @@ import org.apache.curator.ensemble.EnsembleProvider;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
 import org.apache.curator.retry.ExponentialBackoffRetry;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.BootstrapContext;
 import org.springframework.boot.BootstrapRegistry;
 import org.springframework.boot.context.properties.bind.Bindable;
@@ -18,8 +20,9 @@ import org.springframework.web.util.UriComponents;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
 
-@Slf4j
 public abstract class CuratorFactory {
+
+    private static final Logger log = LoggerFactory.getLogger(CuratorFactory.class);
 
     public static CuratorFramework curatorFramework(ZookeeperProperties properties,
                                                     RetryPolicy retryPolicy,
@@ -66,13 +69,13 @@ public abstract class CuratorFactory {
         );
     }
 
-    public static void registerCurator(BootstrapRegistry registry, UriComponents uriComponents, boolean optional) {
-        registry.registerIfAbsent(ZookeeperProperties.class,
-                context -> loadProperties(context.get(Binder.class), uriComponents));
+//    public static void registerCurator(BootstrapRegistry registry, UriComponents uriComponents, boolean optional) {
+//        registry.registerIfAbsent(ZookeeperProperties.class,
+//                context -> loadProperties(context.get(Binder.class), uriComponents));
+//
+//    }
 
-    }
-
-    static ZookeeperProperties loadProperties(Binder binder, UriComponents uriComponents) {
+    public static ZookeeperProperties loadProperties(Binder binder, UriComponents uriComponents) {
         ZookeeperProperties zookeeperProperties = binder.bind(ZookeeperProperties.PREFIX, Bindable.of(ZookeeperProperties.class))
                 .orElse(new ZookeeperProperties());
 

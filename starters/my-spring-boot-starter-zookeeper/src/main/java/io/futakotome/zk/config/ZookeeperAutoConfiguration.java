@@ -2,6 +2,7 @@ package io.futakotome.zk.config;
 
 import io.futakotome.zk.CuratorFactory;
 import io.futakotome.zk.CuratorFrameworkCustomizer;
+import io.futakotome.zk.ZookeeperClientTemplate;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.curator.RetryPolicy;
 import org.apache.curator.drivers.TracerDriver;
@@ -18,6 +19,7 @@ import org.springframework.context.annotation.Configuration;
 @EnableConfigurationProperties(ZookeeperProperties.class)
 @ConditionalOnZookeeperEnabled
 public class ZookeeperAutoConfiguration {
+
     @Bean
     @ConditionalOnMissingBean
     public ZookeeperProperties zookeeperProperties() {
@@ -40,5 +42,11 @@ public class ZookeeperAutoConfiguration {
     @ConditionalOnMissingBean
     public RetryPolicy exponentialBackoffRetry(ZookeeperProperties properties) {
         return CuratorFactory.retryPolicy(properties);
+    }
+
+    @Bean
+    @ConditionalOnMissingBean
+    public ZookeeperClientTemplate zookeeperClientTemplate(CuratorFramework curatorFramework) {
+        return new ZookeeperClientTemplate(curatorFramework);
     }
 }
