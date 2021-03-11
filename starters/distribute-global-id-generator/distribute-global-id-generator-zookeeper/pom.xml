@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>distribute-global-id-generator-core</artifactId>
+    <artifactId>distribute-global-id-generator-zookeeper</artifactId>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
@@ -17,8 +17,9 @@
     </properties>
     <dependencies>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
+            <groupId>io.futakotome</groupId>
+            <artifactId>distribute-global-id-generator-core</artifactId>
+            <version>${project.version}</version>
         </dependency>
     </dependencies>
 </project>

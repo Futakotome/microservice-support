@@ -20,6 +20,7 @@
         <module>sharding-db-proxy</module>
         <module>distribute-lock</module>
         <module>distribute-global-id-generator</module>
+        <module>my-spring-boot-starter-zookeeper</module>
     </modules>
 
 </project>

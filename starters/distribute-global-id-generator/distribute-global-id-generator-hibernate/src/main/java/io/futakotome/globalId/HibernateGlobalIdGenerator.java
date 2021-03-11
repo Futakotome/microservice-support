@@ -3,6 +3,7 @@ package io.futakotome.globalId;
 import io.futakotome.globalId.config.IdGeneratorConfiguration;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
+import lombok.SneakyThrows;
 import org.hibernate.HibernateException;
 import org.hibernate.MappingException;
 import org.hibernate.engine.spi.SharedSessionContractImplementor;
@@ -28,7 +29,11 @@ public class HibernateGlobalIdGenerator implements Configurable,
 
     @Override
     public Serializable generate(SharedSessionContractImplementor sharedSessionContractImplementor, Object o) throws HibernateException {
-        return null;
+        try {
+            return nextSequenceId();
+        } catch (Exception e) {
+            throw new HibernateException(e);
+        }
     }
 
     @Override
