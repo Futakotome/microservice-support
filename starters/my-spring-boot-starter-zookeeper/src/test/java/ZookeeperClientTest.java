@@ -19,6 +19,7 @@ public class ZookeeperClientTest {
 
         ZookeeperClientTemplate template = context.getBean(ZookeeperClientTemplate.class);
         template.createPath("/test");
+        template.deletePath("/test");
     }
 
     @Configuration(proxyBeanMethods = false)
