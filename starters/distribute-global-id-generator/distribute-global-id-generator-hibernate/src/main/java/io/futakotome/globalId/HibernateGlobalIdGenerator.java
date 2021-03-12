@@ -1,6 +1,5 @@
 package io.futakotome.globalId;
 
-import io.futakotome.globalId.config.IdGeneratorConfiguration;
 import org.hibernate.HibernateException;
 import org.hibernate.MappingException;
 import org.hibernate.engine.spi.SharedSessionContractImplementor;
@@ -16,10 +15,10 @@ import java.util.function.Supplier;
 public class HibernateGlobalIdGenerator implements Configurable,
         IdentifierGenerator, IdGenerator {
 
-    private final Supplier<IdGeneratorConfiguration> idGeneratorConfiguration;
+    private final Supplier<IdGenerator> idGenerator;
 
-    public HibernateGlobalIdGenerator(Supplier<IdGeneratorConfiguration> idGeneratorConfiguration) {
-        this.idGeneratorConfiguration = idGeneratorConfiguration;
+    public HibernateGlobalIdGenerator(Supplier<IdGenerator> idGenerator) {
+        this.idGenerator = idGenerator;
     }
 
     @Override
@@ -38,9 +37,8 @@ public class HibernateGlobalIdGenerator implements Configurable,
 
     @Override
     public String nextSequenceId(String key) throws Exception {
-        return idGeneratorConfiguration
+        return idGenerator
                 .get()
-                .idGenerator()
                 .nextSequenceId(key);
     }
 

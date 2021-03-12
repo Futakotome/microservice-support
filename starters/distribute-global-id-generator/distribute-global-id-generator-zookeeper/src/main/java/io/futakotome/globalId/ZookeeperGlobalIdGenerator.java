@@ -8,28 +8,30 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.util.Assert;
 
+import java.util.function.Supplier;
+
 public class ZookeeperGlobalIdGenerator implements IdGenerator, DisposableBean {
     private static final Logger LOGGER = LoggerFactory.getLogger(ZookeeperGlobalIdGenerator.class);
 
-    private final ZookeeperClientTemplate zookeeperClientTemplate;
+    private final Supplier<ZookeeperClientTemplate> zookeeperClientTemplate;
 
-    public ZookeeperGlobalIdGenerator(ZookeeperClientTemplate template) {
+    public ZookeeperGlobalIdGenerator(Supplier<ZookeeperClientTemplate> template) {
         this.zookeeperClientTemplate = template;
     }
 
     private static final String PREFIX = "/zk/globalId";
 
-
+    //todo 并发场景应该加锁
     @Override
     public String nextSequenceId(String key) throws Exception {
         Assert.notNull(key, "Key must not be null.");
-        zookeeperClientTemplate.validateStartedStatus();
+        zookeeperClientTemplate.get().validateStartedStatus();
         PathUtils.validatePath(pathConnect(key));
-        if (!zookeeperClientTemplate.pathExist(pathConnect(key))) {
-            String createdPath = zookeeperClientTemplate.createPath(pathConnect(key), CreateMode.PERSISTENT);
+        if (!zookeeperClientTemplate.get().pathExist(pathConnect(key))) {
+            String createdPath = zookeeperClientTemplate.get().createPath(pathConnect(key), CreateMode.PERSISTENT);
             LOGGER.info("Created znode : {}", createdPath);
         }
-        int nextSequenceId = zookeeperClientTemplate.withZnodeVersion(pathConnect(key));
+        int nextSequenceId = zookeeperClientTemplate.get().withZnodeVersion(pathConnect(key));
         return String.valueOf(nextSequenceId);
     }
 
@@ -40,7 +42,7 @@ public class ZookeeperGlobalIdGenerator implements IdGenerator, DisposableBean {
     @Override
     public void destroy() throws Exception {
         try {
-            zookeeperClientTemplate.close();
+            zookeeperClientTemplate.get().close();
         } catch (Exception e) {
             throw new ZookeeperGlobalIdGeneratorException(e.getMessage(), e);
         }
