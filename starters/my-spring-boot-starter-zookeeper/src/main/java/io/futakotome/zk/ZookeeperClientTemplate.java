@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
-public class ZookeeperClientTemplate implements ZookeeperOperations {
+public class ZookeeperClientTemplate implements ZookeeperOperations, SequenceId {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ZookeeperClientTemplate.class);
     private final CuratorFramework curatorFramework;
@@ -107,31 +107,31 @@ public class ZookeeperClientTemplate implements ZookeeperOperations {
     }
 
     @Override
-    public void createPath(String path) throws Exception {
+    public String createPath(String path) throws Exception {
         validateStartedStatus();
         PathUtils.validatePath(path);
-        curatorFramework.create().creatingParentsIfNeeded().forPath(path, null);
+        return curatorFramework.create().creatingParentsIfNeeded().forPath(path, null);
     }
 
     @Override
-    public void createPath(String path, byte[] data) throws Exception {
+    public String createPath(String path, byte[] data) throws Exception {
         validateStartedStatus();
         PathUtils.validatePath(path);
-        curatorFramework.create().creatingParentsIfNeeded().forPath(path, data);
+        return curatorFramework.create().creatingParentsIfNeeded().forPath(path, data);
     }
 
     @Override
-    public void createPath(String path, CreateMode mode) throws Exception {
+    public String createPath(String path, CreateMode mode) throws Exception {
         validateStartedStatus();
         PathUtils.validatePath(path);
-        curatorFramework.create().creatingParentsIfNeeded().withMode(mode).forPath(path, null);
+        return curatorFramework.create().creatingParentsIfNeeded().withMode(mode).forPath(path, null);
     }
 
     @Override
-    public void createPath(String path, byte[] data, CreateMode mode) throws Exception {
+    public String createPath(String path, byte[] data, CreateMode mode) throws Exception {
         validateStartedStatus();
         PathUtils.validatePath(path);
-        curatorFramework.create().creatingParentsIfNeeded().withMode(mode).forPath(path, data);
+        return curatorFramework.create().creatingParentsIfNeeded().withMode(mode).forPath(path, data);
     }
 
     @Override
@@ -163,6 +163,17 @@ public class ZookeeperClientTemplate implements ZookeeperOperations {
     @Override
     public String getPath(String prefix, String key) {
         return "/" + prefix + "/" + key;
+    }
+
+    @Override
+    //todo 基于持久化有序节点
+    public int withPersistentSequentialZnode(String path) throws Exception {
+        return 0;
+    }
+
+    @Override
+    public int withZnodeVersion(String path) throws Exception {
+        return curatorFramework.setData().withVersion(-1).forPath(path).getVersion();
     }
 
     private static class ZookeeperClientException extends RuntimeException {

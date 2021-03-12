@@ -1,7 +1,6 @@
 package io.futakotome.zk;
 
 import io.futakotome.zk.config.ZookeeperProperties;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.curator.RetryPolicy;
 import org.apache.curator.drivers.TracerDriver;
 import org.apache.curator.ensemble.EnsembleProvider;
@@ -11,7 +10,6 @@ import org.apache.curator.retry.ExponentialBackoffRetry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.BootstrapContext;
-import org.springframework.boot.BootstrapRegistry;
 import org.springframework.boot.context.properties.bind.Bindable;
 import org.springframework.boot.context.properties.bind.Binder;
 import org.springframework.util.StringUtils;

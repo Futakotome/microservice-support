@@ -1,9 +1,6 @@
 package io.futakotome.globalId;
 
 import io.futakotome.globalId.config.IdGeneratorConfiguration;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
-import lombok.SneakyThrows;
 import org.hibernate.HibernateException;
 import org.hibernate.MappingException;
 import org.hibernate.engine.spi.SharedSessionContractImplementor;
@@ -16,11 +13,14 @@ import java.io.Serializable;
 import java.util.Properties;
 import java.util.function.Supplier;
 
-@RequiredArgsConstructor
 public class HibernateGlobalIdGenerator implements Configurable,
         IdentifierGenerator, IdGenerator {
 
-    private final @NonNull Supplier<IdGeneratorConfiguration> idGeneratorConfiguration;
+    private final Supplier<IdGeneratorConfiguration> idGeneratorConfiguration;
+
+    public HibernateGlobalIdGenerator(Supplier<IdGeneratorConfiguration> idGeneratorConfiguration) {
+        this.idGeneratorConfiguration = idGeneratorConfiguration;
+    }
 
     @Override
     public void configure(Type type, Properties properties, ServiceRegistry serviceRegistry) throws MappingException {
@@ -30,17 +30,18 @@ public class HibernateGlobalIdGenerator implements Configurable,
     @Override
     public Serializable generate(SharedSessionContractImplementor sharedSessionContractImplementor, Object o) throws HibernateException {
         try {
-            return nextSequenceId();
+            return nextSequenceId("hibernate");
         } catch (Exception e) {
             throw new HibernateException(e);
         }
     }
 
     @Override
-    public String nextSequenceId() throws Exception {
+    public String nextSequenceId(String key) throws Exception {
         return idGeneratorConfiguration
                 .get()
                 .idGenerator()
-                .nextSequenceId();
+                .nextSequenceId(key);
     }
+
 }

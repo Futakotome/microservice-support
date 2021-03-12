@@ -3,7 +3,6 @@ package io.futakotome.zk.config;
 import io.futakotome.zk.CuratorFactory;
 import io.futakotome.zk.CuratorFrameworkCustomizer;
 import io.futakotome.zk.ZookeeperClientTemplate;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.curator.RetryPolicy;
 import org.apache.curator.drivers.TracerDriver;
 import org.apache.curator.ensemble.EnsembleProvider;
@@ -14,7 +13,6 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-@Slf4j
 @Configuration(proxyBeanMethods = false)
 @EnableConfigurationProperties(ZookeeperProperties.class)
 @ConditionalOnZookeeperEnabled

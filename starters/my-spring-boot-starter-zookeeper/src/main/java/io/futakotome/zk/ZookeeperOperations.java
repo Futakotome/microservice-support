@@ -31,13 +31,13 @@ public interface ZookeeperOperations {
 
     Stat getPathStat(String path) throws Exception;
 
-    void createPath(String path) throws Exception;
+    String createPath(String path) throws Exception;
 
-    void createPath(String path, byte[] data) throws Exception;
+    String createPath(String path, byte[] data) throws Exception;
 
-    void createPath(String path, CreateMode mode) throws Exception;
+    String createPath(String path, CreateMode mode) throws Exception;
 
-    void createPath(String path, byte[] data, CreateMode mode) throws Exception;
+    String createPath(String path, byte[] data, CreateMode mode) throws Exception;
 
     void deletePath(String path) throws Exception;
 
