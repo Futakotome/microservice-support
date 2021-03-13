@@ -21,6 +21,7 @@
         <module>distribute-lock</module>
         <module>distribute-global-id-generator</module>
         <module>my-spring-boot-starter-zookeeper</module>
+        <module>distribute-cache</module>
     </modules>
 
 </project>
