@@ -1,4 +1,4 @@
-package io.futakotome.vertx.coreStudy.http.embed;
+package io.futakotome.vertx.coreStudy.embed;
 
 import io.vertx.core.Vertx;
 
