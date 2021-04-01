@@ -3,6 +3,7 @@ package io.futakotome.vertx.coreStudy.http.proxyconnect;
 import io.futakotome.vertx.util.Runner;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.http.HttpServerOptions;
+import io.vertx.core.net.JksOptions;
 import io.vertx.core.net.SelfSignedCertificate;
 
 public class Server extends AbstractVerticle {
@@ -15,7 +16,9 @@ public class Server extends AbstractVerticle {
         SelfSignedCertificate certificate = SelfSignedCertificate.create();
         HttpServerOptions serverOptions = new HttpServerOptions()
                 .setSsl(true)
-                .setKeyCertOptions(certificate.keyCertOptions());
+                .setKeyStoreOptions(
+                        new JksOptions().setPath("server-keystore.jks").setPassword("wibble")
+                );
 
         vertx.createHttpServer(serverOptions)
                 .requestHandler(request -> {
